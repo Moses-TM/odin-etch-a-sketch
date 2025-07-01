@@ -15,3 +15,7 @@
     width: 6.25vw;
     flex: 0 1 6.25%;
 }
+
+.grid-item.active{
+    background: black;
+}
