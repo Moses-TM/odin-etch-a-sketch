@@ -82,3 +82,9 @@ window.addEventListener('resize', function () {
         createGrid(gridSize);
     }
 });
+
+//CLEAR THE SCREEN BUT MAINTAIN GRID SIZE
+const resetButton = document.getElementById('reset-btn')
+resetButton.addEventListener('click', () => {
+    createGrid(gridSize)
+})
