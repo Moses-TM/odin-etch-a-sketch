@@ -7,11 +7,11 @@ function createGrid(gridSize) {
 
     //CALCULATE AVAILABLE SPACE
     const availableWidth = window.innerWidth
-    const availableHeight = window.innerHeight - 20.4 //SUBTRACT BUTTON HEIGHT
+    const availableHeight = window.innerHeight - 10 //SUBTRACT BUTTON HEIGHT
 
     //CALCULATE DIMENSIONS OF EACH ITEM
-    const itemWidth = (availableWidth / gridSize) - 2 //SUBTRACT BORDER WIDTH FOR EACH SIDE
-    const itemHeight = (availableHeight / gridSize) - 2
+    const itemWidth = (availableWidth / gridSize)
+    const itemHeight = (availableHeight / gridSize)
 
     for (let i = 0; i < gridSize; i++) {
         for (let j = 0; j < gridSize; j++) {

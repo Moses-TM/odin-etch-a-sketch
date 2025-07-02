@@ -13,12 +13,12 @@ body{
     margin-top: 12px;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 12px);
 }
 
 .grid-item{
     box-sizing: border-box;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     align-items: center;
     justify-content: center;
