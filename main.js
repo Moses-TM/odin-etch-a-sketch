@@ -1,14 +1,18 @@
 //CREATE 16 * 16 GRID USING FLEX
 const gridContainer = document.getElementById("grid-container")
-let gridSize = 16
 
-for(let i = 0; i < gridSize; i++){
-    for (let j =0; j < gridSize; j++){
-        const gridItem = document.createElement('div')
-        gridItem.classList.add('grid-item')
-        gridContainer.appendChild(gridItem)
+function createGrid(gridSize) {
+    for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
+            const gridItem = document.createElement('div')
+            gridItem.classList.add('grid-item')
+            gridContainer.appendChild(gridItem)
+        }
     }
 }
+
+//INITIAL GRID
+createGrid(16)
 
 // CHECK NUMBER OF ITEMS IN CONTAINER
 // const divCount = gridContainer.querySelectorAll('div')
@@ -19,7 +23,7 @@ const gridItem = document.querySelectorAll('.grid-item')
 let isMouseDown = false
 gridItem.forEach(item => {
     item.addEventListener('mouseenter', () => {
-        if (isMouseDown){
+        if (isMouseDown) {
             item.classList.add('active')
         }
     })
@@ -34,4 +38,27 @@ document.addEventListener('mousedown', () => isMouseDown = true)
 document.addEventListener('mouseup', () => isMouseDown = false)
 
 //PREVENT DRAG SELECTION(CLICK + DRAG)
-document.addEventListener('dragstart' , (e) => e.preventDefault())
+document.addEventListener('dragstart', (e) => e.preventDefault())
+
+//GRID SIZE SELECT
+const gridSizeButton = document.getElementById('grid-size')
+let gridSize = 0
+
+gridSizeButton.addEventListener('click', () => {
+    let correctInput = null;
+    while (correctInput === null || isNaN(correctInput) || correctInput < 1 || correctInput > 100) {
+        const input = prompt('Select the size of your grid: \nNote: Enter value between 1 and 100')
+
+        if (input === null) {
+            return
+        }
+
+        correctInput = parseInt(input)
+
+        if (isNaN(correctInput) || correctInput < 1 || correctInput > 100) {
+            alert('Please enter a valid number between 1 and 100')
+        }
+    }
+    gridSize = correctInput
+    createGrid(gridSize)
+})
