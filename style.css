@@ -2,23 +2,49 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 #grid-container{
     display: flex;
     flex-wrap: wrap;
-    max-width: 960px;
-    min-height: 100vh;
-    margin: auto;
+    justify-content: center;
+    gap: 0;
+    margin-top: 12px;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
 .grid-item{
+    box-sizing: border-box;
     border: 1px solid black;
-    height: 6.25vh;
-    width: 6.25vw;
-    flex: 0 1 6.25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
 .grid-item.active{
     background: black;
+}
+
+#btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    margin: 0;
+    padding-top: 8px;  
+}
+
+#grid-size{
+    background-color: #fca311;
+    color: black;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px;
 }

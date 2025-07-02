@@ -1,48 +1,61 @@
-//CREATE 16 * 16 GRID USING FLEX
+//CREATE N*N GRID USING FLEX
 const gridContainer = document.getElementById("grid-container")
 
 function createGrid(gridSize) {
+    //CLEAR EXISTING GRID
+    gridContainer.innerHTML = ''
+
+    //CALCULATE AVAILABLE SPACE
+    const availableWidth = window.innerWidth
+    const availableHeight = window.innerHeight - 20.4 //SUBTRACT BUTTON HEIGHT
+
+    //CALCULATE DIMENSIONS OF EACH ITEM
+    const itemWidth = (availableWidth / gridSize) - 2 //SUBTRACT BORDER WIDTH FOR EACH SIDE
+    const itemHeight = (availableHeight / gridSize) - 2
+
     for (let i = 0; i < gridSize; i++) {
         for (let j = 0; j < gridSize; j++) {
             const gridItem = document.createElement('div')
             gridItem.classList.add('grid-item')
+            gridItem.style.width = `${itemWidth}px`
+            gridItem.style.height = `${itemHeight}px`
             gridContainer.appendChild(gridItem)
         }
     }
+    // CHECK NUMBER OF ITEMS IN CONTAINER
+    // const divCount = gridContainer.querySelectorAll('div')
+    // console.log(divCount.length)
+
+    //ON CLICK + DRAG CHANGES COLOR PERMANENTLY
+    const gridItem = document.querySelectorAll('.grid-item')
+    let isMouseDown = false
+    gridItem.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            if (isMouseDown) {
+                item.classList.add('active')
+            }
+        })
+
+        item.addEventListener('mousedown', () => {
+            item.classList.add('active')
+        })
+    })
+
+    //TRACK MOUSE STATE GLOBALLY
+    document.addEventListener('mousedown', () => isMouseDown = true)
+    document.addEventListener('mouseup', () => isMouseDown = false)
+
+    //PREVENT DRAG SELECTION(CLICK + DRAG)
+    document.addEventListener('dragstart', (e) => e.preventDefault())
 }
 
 //INITIAL GRID
 createGrid(16)
 
-// CHECK NUMBER OF ITEMS IN CONTAINER
-// const divCount = gridContainer.querySelectorAll('div')
-// console.log(divCount.length)
-
-//ON CLICK + DRAG CHANGES COLOR PERMANENTLY
-const gridItem = document.querySelectorAll('.grid-item')
-let isMouseDown = false
-gridItem.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        if (isMouseDown) {
-            item.classList.add('active')
-        }
-    })
-
-    item.addEventListener('mousedown', () => {
-        item.classList.add('active')
-    })
-})
-
-//TRACK MOUSE STATE GLOBALLY
-document.addEventListener('mousedown', () => isMouseDown = true)
-document.addEventListener('mouseup', () => isMouseDown = false)
-
-//PREVENT DRAG SELECTION(CLICK + DRAG)
-document.addEventListener('dragstart', (e) => e.preventDefault())
 
 //GRID SIZE SELECT
 const gridSizeButton = document.getElementById('grid-size')
-let gridSize = 0
+let gridSize = 16
 
 gridSizeButton.addEventListener('click', () => {
     let correctInput = null;
@@ -62,3 +75,10 @@ gridSizeButton.addEventListener('click', () => {
     gridSize = correctInput
     createGrid(gridSize)
 })
+
+// READJUST GRID WHEN WINDOWS SIZE CHANGES
+window.addEventListener('resize', function () {
+    if (gridSize > 0) {
+        createGrid(gridSize);
+    }
+});
