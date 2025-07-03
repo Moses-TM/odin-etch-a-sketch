@@ -30,13 +30,25 @@ function createGrid(gridSize) {
     const gridItem = document.querySelectorAll('.grid-item')
     let isMouseDown = false
     gridItem.forEach(item => {
+        let opacity = 0
         item.addEventListener('mouseenter', () => {
             if (isMouseDown) {
+                let computedStyle = window.getComputedStyle(item)
+                let currentOpacity = parseFloat(computedStyle.opacity)
+                opacity = Math.min(currentOpacity + 0.1, 1.0);
+                item.style.opacity = opacity;
                 item.classList.add('active')
             }
         })
 
         item.addEventListener('mousedown', () => {
+            item.classList.add('active')
+        })
+
+        item.addEventListener('click', () => {
+            let computedStyle = window.getComputedStyle(item)
+            let currentOpacity = parseFloat(computedStyle.opacity)
+            item.style.opacity = Math.min(currentOpacity + 0.1, 1.0);
             item.classList.add('active')
         })
     })
