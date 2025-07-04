@@ -24,7 +24,8 @@ body{
     justify-content: center;
     margin: 0;
     padding: 0;
-    opacity: 0.1;
+    opacity: 0;
+    background-color: rgb(255, 255, 255);
 }
 
 .grid-item.active{
