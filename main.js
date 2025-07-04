@@ -10,7 +10,7 @@ function createGrid(gridSize) {
 
     //CALCULATE AVAILABLE SPACE
     const availableWidth = window.innerWidth
-    const availableHeight = window.innerHeight - 10 //SUBTRACT BUTTON HEIGHT
+    const availableHeight = window.innerHeight - 52//SUBTRACT BUTTON HEIGHT
 
     //CALCULATE DIMENSIONS OF EACH ITEM
     const itemWidth = (availableWidth / gridSize)

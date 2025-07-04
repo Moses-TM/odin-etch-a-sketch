@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch-A-Sketch</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
     <script src="main.js" defer></script>
 </head>
+
 <body>
     <div id="btn-container">
-        <p>Etch-A-Sketch</p>
+        <div class="icon-name">
+            <p>Etch-A-Sketch</p>
+        </div>
         <div class="btn-right">
-            <button class="button" id="reset-btn">Reset</button>
-            <button class="button" id="random-btn">Random</button>
+            <button class="button" id="reset-btn">Reset Grid</button>
+            <button class="button" id="random-btn">Randomize</button>
             <button class="button" id="grid-size">Select Grid Size</button>
         </div>
     </div>
+    
     <div id="grid-container"></div>
 </body>
+
 </html>
