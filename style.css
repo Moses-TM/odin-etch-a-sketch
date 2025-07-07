@@ -45,8 +45,8 @@ body{
 }
 
 .button{
-    background-color: #081c15;
-    color: #40916c;
+    background-color: #F0544F;
+    color: #FDF0D5;
     border-radius: 6px;
     border: none;
     cursor: pointer;
@@ -55,16 +55,19 @@ body{
 }
 
 .button:hover{
-    background-color: #40916c;
-    color: #081c15;
+    background-color: #3A3335;
+    color: #F0544F;
 }
 
-.button:active {
-  background-color: #2d6a4f;
-  color: #081c15;
+.button:active{
+    background-color: #F0544F;
+    color: #FDF0D5;
+    position: relative;
+    top: 1px;
 }
 
 .icon-name > p{
     font-family: "Bitcount Grid Double", sans-serif;
     font-weight: 300;
+    font-size: 24px;
 }
