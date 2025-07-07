@@ -9,8 +9,8 @@ function createGrid(gridSize) {
     gridContainer.innerHTML = ''
 
     //CALCULATE AVAILABLE SPACE
-    const availableWidth = window.innerWidth
-    const availableHeight = window.innerHeight - 52//SUBTRACT BUTTON HEIGHT
+    const availableWidth = 638.4
+    const availableHeight = 600
 
     //CALCULATE DIMENSIONS OF EACH ITEM
     const itemWidth = (availableWidth / gridSize)
@@ -20,6 +20,7 @@ function createGrid(gridSize) {
         for (let j = 0; j < gridSize; j++) {
             const gridItem = document.createElement('div')
             gridItem.classList.add('grid-item')
+            gridItem.style.border = '1px solid darkgray'
             gridItem.style.width = `${itemWidth}px`
             gridItem.style.height = `${itemHeight}px`
             gridContainer.appendChild(gridItem)
@@ -32,32 +33,35 @@ function createGrid(gridSize) {
 function gridInteraction() {
     //ON CLICK + DRAG CHANGES COLOR PERMANENTLY
     const gridItem = document.querySelectorAll('.grid-item')
-    let isMouseDown = false
+    // let isMouseDown = false
     gridItem.forEach(item => {
         let opacity = 0
 
         //WHEN MOUSE POINTER ENTERS A GRID CELL
         item.addEventListener('mouseenter', () => {
+            //FOR CLICK AND DRAG
             if (isMouseDown) {
-                let computedStyle = window.getComputedStyle(item)
-                let currentOpacity = parseFloat(computedStyle.opacity)
-                opacity = Math.min(currentOpacity + 0.1, 1.0);
-                item.style.opacity = opacity;
-                item.classList.add('active')
+                 let computedStyle = window.getComputedStyle(item)
+                 let currentOpacity = parseFloat(computedStyle.opacity)
+                 opacity = Math.min(currentOpacity + 0.1, 1.0);
+                 item.style.opacity = opacity;
+                 item.style.backgroundColor = "black"
             }
-        })
 
-        //WHEN THE FIRST GRID CELL IS PRESSED
-        item.addEventListener('mousedown', () => {
-            item.classList.add('active')
+            //FOR HOVER
+            // let computedStyle = window.getComputedStyle(item)
+            // let currentOpacity = parseFloat(computedStyle.opacity)
+            // opacity = Math.min(currentOpacity + 0.1, 1.0);
+            // item.style.opacity = opacity;
+            // item.style.backgroundColor = "black"
         })
 
         //INCREASE COLOR OPACITY ON CLICK
-        item.addEventListener('click', () => {
+        item.addEventListener('mousedown', () => {
             let computedStyle = window.getComputedStyle(item)
             let currentOpacity = parseFloat(computedStyle.opacity)
             item.style.opacity = Math.min(currentOpacity + 0.1, 1.0);
-            item.classList.add('active')
+            item.style.backgroundColor = "black"
         })
     })
 
@@ -90,6 +94,7 @@ function randomColorGridInteraction() {
         let opacity
         //WHEN MOUSE POINTER ENTERS A GRID CELL
         item.addEventListener('mouseenter', () => {
+            //FOR CLICK AND DRAG
             if (isMouseDown) {
                 let computedStyle = window.getComputedStyle(item)
                 let currentOpacity = parseFloat(computedStyle.opacity)
@@ -99,6 +104,15 @@ function randomColorGridInteraction() {
                 item.style.background = colorValue;
                 item.style.opacity = opacity
             }
+
+            //FOR HOVER
+            // let computedStyle = window.getComputedStyle(item)
+            // let currentOpacity = parseFloat(computedStyle.opacity)
+            // const generatedColor = generateRandomColor()
+            // opacity = Math.min(currentOpacity + 0.1, 1.0);
+            // let colorValue = `rgb(${generatedColor[0]}, ${generatedColor[1]}, ${generatedColor[2]}`
+            // item.style.background = colorValue;
+            // item.style.opacity = opacity
         })
 
         //INCREASE COLOR OPACITY ON CLICK
@@ -122,17 +136,17 @@ function randomColorGridInteraction() {
 }
 
 //CHANGE INTERACTION MODE BASED ON CLICK OF BUTTON
-function setInteractionMode(){
+function setInteractionMode() {
     //FIRST REMOVE ALL EXISTING EVENT LISTENERS TO AVOID DUPLICATES
     const gridItems = document.querySelectorAll('.grid-item');
     gridItems.forEach(item => {
         item.replaceWith(item.cloneNode(true))  //QUICK WAY TO REMOVE ALL LISTENERS
     });
 
-    if(isRandomColorMode){
+    if (isRandomColorMode) {
         randomColorGridInteraction();
     }
-    else{
+    else {
         gridInteraction();
     }
 }

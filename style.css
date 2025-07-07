@@ -5,31 +5,33 @@ body{
   overflow: hidden;
 }
 
+#container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 640px;
+}
+
 #grid-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0;
+    align-items: center;
+    border: 1px solid black;
     margin-top: 12px;
     padding: 0;
-    width: 100vw;
-    height: calc(100vh - 52px);
+    height: 600px;
 }
 
 .grid-item{
     box-sizing: border-box;
-    border: 1px solid lightgrey;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
     padding: 0;
-    opacity: 0;
+    opacity: 0.1;
     background-color: rgb(255, 255, 255);
-}
-
-.grid-item.active{
-    background-color: rgb(0, 0, 0);
 }
 
 #btn-container{
@@ -38,7 +40,8 @@ body{
     align-items: center;
     height: 32px;
     margin: 0;
-    padding: 8px 8px 0 8px;
+    padding-top: 8px;
+    flex: auto;
 }
 
 .button{

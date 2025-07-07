@@ -15,18 +15,20 @@
 </head>
 
 <body>
-    <div id="btn-container">
-        <div class="icon-name">
-            <p>Etch-A-Sketch</p>
+    <div id="container">
+        <div id="btn-container">
+            <div class="icon-name">
+                <p>Etch-A-Sketch</p>
+            </div>
+            <div class="btn-right">
+                <button class="button" id="reset-btn">Shake It Up!</button>
+                <button class="button" id="random-btn">Randomize</button>
+                <button class="button" id="grid-size">Select Grid Size</button>
+            </div>
         </div>
-        <div class="btn-right">
-            <button class="button" id="reset-btn">Clear Grid</button>
-            <button class="button" id="random-btn">Randomize</button>
-            <button class="button" id="grid-size">Select Grid Size</button>
-        </div>
+
+        <div id="grid-container"></div>
     </div>
-    
-    <div id="grid-container"></div>
 </body>
 
 </html>
